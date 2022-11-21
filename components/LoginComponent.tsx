@@ -7,19 +7,13 @@ import {
   FormLabel,
   Input
 } from '@chakra-ui/react';
-import { useSession, useSupabaseClient } from '@supabase/auth-helpers-react';
 
 const Login = () => {
-
-  const supabase = useSupabaseClient();
 
   async function handleSubmit(e:FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const email = e.currentTarget!.email.value;
     console.log('Logging In');
-    const { data, error} = await supabase.auth.signInWithOtp({
-      email: email
-    });
   }
 
   return (

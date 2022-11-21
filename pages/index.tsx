@@ -1,26 +1,24 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
 
-import { useSession, useSupabaseClient } from '@supabase/auth-helpers-react'
-
 import {
-  Container, 
   HStack,
   Box,
   Heading,
   VStack,
   Text,
-  Button
+  Button,
+  Input,
+  Accordion,
+  AccordionItem,
+  AccordionButton,
+  AccordionPanel,
+  AccordionIcon,
 } from '@chakra-ui/react';
 
-import Login from '../components/LoginComponent';
-import User from '../components/UserSetup';
 import Image from 'next/image';
 
 const Home: NextPage = () => {
-  
-  const session = useSession();
-  const supabase = useSupabaseClient();
 
   return (
     <>
@@ -50,9 +48,28 @@ const Home: NextPage = () => {
               reaches dangerous levels.
             </Text>
 
-            <Button colorScheme='green'>
-              Sign Up
-            </Button>
+            <Accordion allowToggle={true} borderWidth='0' borderColor="green.200">
+              <AccordionItem>
+
+                <h2>
+                  <AccordionButton>
+                    <Button colorScheme="green" textAlign='left'>
+                      Join waitlist
+                    </Button>
+                  </AccordionButton>
+                </h2>
+
+                <AccordionPanel>
+                  <form>
+                    <Input name="email" type="email" borderRadius='sm' placeholder='yash@example.com' borderColor="black" />
+                    <Button>
+                      Submit
+                    </Button>
+                  </form>
+                </AccordionPanel>
+
+              </AccordionItem>
+            </Accordion>
           </Box>
           <Box>
             <Image
@@ -108,15 +125,6 @@ const Home: NextPage = () => {
           
         </HStack>
       </VStack>
-    {/*
-      {!session ? (
-        <Container>
-            <Login />
-        </Container>
-      ) : (
-        <User />
-      )}
-    */}
     </>
   );
 }

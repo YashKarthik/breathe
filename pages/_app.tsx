@@ -1,23 +1,18 @@
 import { useState } from 'react'
 import type { AppProps } from 'next/app'
 
-import { createBrowserSupabaseClient, Session } from '@supabase/auth-helpers-nextjs'
-import { SessionContextProvider } from '@supabase/auth-helpers-react'
+export { Header } from '../components/Header';
 
 import { ChakraProvider } from '@chakra-ui/react'
+import { Header } from '../components/Header';
 
-function Breathe({ Component, pageProps }: AppProps<{ initialSession: Session }>) {
-  const [ supabaseClient ] = useState(() => createBrowserSupabaseClient());
+function Breathe({ Component, pageProps }: AppProps) {
 
   return (
-    <SessionContextProvider
-      supabaseClient={supabaseClient}
-      initialSession={pageProps.initialSession}
-    >
-      <ChakraProvider>
-        <Component {...pageProps} />
-      </ChakraProvider>
-    </SessionContextProvider>
+    <ChakraProvider>
+      <Header />
+      <Component {...pageProps} />
+    </ChakraProvider>
   );
 }
 
