@@ -41,7 +41,7 @@ const Home: NextPage = () => {
               bgGradient='linear(to-l, green, gray.600)'
               bgClip='text'
             >
-              Breathe easy knowing we're on the job :)
+              Breathe easy knowing we&apos;re on the job :)
             </Heading>
             <Text py='5' maxW='50ch' textColor='green.900'>
               Get alerts when air pollution in your city
